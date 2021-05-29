@@ -2,7 +2,7 @@ let computerSelection;
 let playerSelection;
 
 function playerChoice() {
-    playerSelection =  "rock";
+    playerSelection = "rock";
     return playerSelection;
 }
 
