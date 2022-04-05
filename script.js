@@ -2,7 +2,8 @@ let computerSelection;
 let playerSelection;
 
 function playerChoice() {
-    playerSelection = "rock";
+    playerSelection = prompt(`Enter your choice of rock, paper or scissors!`);
+    playerSelection = playerSelection.toLowerCase();
     return playerSelection;
 }
 
@@ -38,20 +39,24 @@ function game() {
         playerSelection = playerChoice();
         computerSelection = computerPlay();
         lastResult = playRound(playerSelection, computerSelection);
-        playerScore += roundResult;
         if (lastResult == "win") {
             console.log("You win!") 
-            roundResult = 1;
+            playerScore += 1
         } else if (lastResult == "loss") {
             console.log("You lost!")
             computerScore += 1;
-            roundResult = 0;
         } else {
             console.log("It was a tie!") 
-            roundResult = 0;
         }
     }
-    console.log(`The results are in: ${playerScore} Your Score ${computerScore} The Computer`);
+    console.log(`The results are in: Your Score: ${playerScore} | The Computer: ${computerScore}`);
+    if (playerScore > computerScore) {
+        console.log(`You win the game!`);
+    } else if (playerScore == computerScore) {
+        console.log(`The game is a draw!`);
+    } else {
+        console.log(`You lose the game!`);
+    }
 }
 
 game();
