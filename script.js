@@ -2,7 +2,7 @@ let computerSelection;
 let playerSelection;
 
 function playerChoice() {
-    playerSelection = prompt(`Enter your choice of rock, paper or scissors!`);
+    playerSelection = 'rock';
     playerSelection = playerSelection.toLowerCase();
     return playerSelection;
 }
