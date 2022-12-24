@@ -4,8 +4,33 @@ body {
 
 h1 {
     color: #23001E;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
 }
 
 #game-log {
     white-space: pre;
 }
+
+button {
+    background-color: #700934; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    width: 20vh;
+    margin: 20px; /* or whatever you like */
+}
+
+.game__buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.game__log {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+}
+
