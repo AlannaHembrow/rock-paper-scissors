@@ -3,6 +3,8 @@ let score = 0;
 let computerScore = 0;
 const computerScoreboard = document.getElementById("computer-scoreboard");
 const playerScoreboard = document.getElementById("player-scoreboard");
+const gameLog = document.getElementById("game-log");
+
 
 for (i of btns) {
     i.addEventListener('click', function() {
@@ -43,6 +45,7 @@ function resetGame() {
     computerScore = 0;
     computerScoreboard.innerHTML = `Computer Score: ${computerScore}`
     playerScoreboard.innerHTML = `Your Score: ${score}`
+    gameLog.innerHTML = "";
     console.log(`You have reset the game`)
 }
 
@@ -51,16 +54,18 @@ function game(playerSelection) {
     for (let i = 0; i < 5; i++) {
         if (roundResult == "win") {
             score += 1;
-            console.log(`You win the round! The score is currently ${score} to ${computerScore}`);
             playerScoreboard.innerHTML = `Your Score: ${score}`;
+            gameLog.insertAdjacentHTML('afterBegin', 'You win this round! \n');
             break;
         } else if (roundResult == "loss") {
             computerScore += 1;
             console.log(`You lost this round! The score is currently ${score} to ${computerScore}`);
             computerScoreboard.innerHTML = `Computer Score: ${computerScore}`;
+            gameLog.insertAdjacentHTML('afterBegin', 'You lost this round! \n');
             break;
         } else {
             console.log(`It was a tie this round! The score is currently ${score} to ${computerScore}`);
+            gameLog.insertAdjacentHTML('afterBegin', 'It was a tie this round! \n');
             break;
         }
     }
