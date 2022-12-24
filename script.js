@@ -1,62 +1,83 @@
-let computerSelection;
-let playerSelection;
+let btns = document.querySelectorAll(".game__buttons-player");
+let score = 0;
+let computerScore = 0;
+const computerScoreboard = document.getElementById("computer-scoreboard");
+const playerScoreboard = document.getElementById("player-scoreboard");
 
-function playerChoice() {
-    playerSelection = prompt(`Enter your choice of rock, paper or scissors!`);
-    playerSelection = playerSelection.toLowerCase();
-    return playerSelection;
+for (i of btns) {
+    i.addEventListener('click', function() {
+        let playerSelection = this.innerHTML
+        game(playerSelection);
+    });
 }
 
-function computerPlay() {
-    let computerChoice = Math.floor(Math.random() * 3);
-    if (computerChoice == 0) {
-        return "rock";
-    } else if (computerChoice == 1) {
-        return "paper";
-    } else {
-        return "scissors";
-    }
-}
-
-function playRound(playerSelection, computerSelection) {
-    if ((playerSelection == "rock" && computerSelection == "paper") || 
-       (playerSelection == "paper" && computerSelection == "scissors" ) ||
-       (playerSelection == "scissors" && computerSelection == "rock")) {
-        return "loss";
-    } else if (playerSelection === computerSelection) {
-        return "tie";
-    } else {
-        return "win";
-    }
-}
-
-function game() {
-    let lastResult;
-    let playerScore = 0;
-    let computerScore = 0;
-    let roundResult = 0;
-    for (let i = 0; i < 5; i++) {
-        playerSelection = playerChoice();
-        computerSelection = computerPlay();
-        lastResult = playRound(playerSelection, computerSelection);
-        if (lastResult == "win") {
-            console.log("You win!") 
-            playerScore += 1
-        } else if (lastResult == "loss") {
-            console.log("You lost!")
-            computerScore += 1;
+function playRound(playerSelection) {
+    let computerChoice = computerRandom();
+        if ((playerSelection == "Rock" && computerChoice == "Paper") || 
+        (playerSelection == "Paper" && computerChoice == "Scissors" ) ||
+        (playerSelection == "Scissors" && computerChoice == "Rock")) {
+            let roundResult = "loss";
+            return roundResult;
+        } else if (playerSelection === computerChoice) {
+            let roundResult = "tie";
+            return roundResult;
         } else {
-            console.log("It was a tie!") 
+            let roundResult = "win";
+            return roundResult;
+        }
+}
+
+function computerRandom() {
+    computerChoice = Math.floor(Math.random() * 3);
+    if (computerChoice == 0) {
+        return "Rock";
+    } else if (computerChoice == 1) {
+        return "Paper";
+    } else {
+        return "Scissors";
+    }
+}
+
+function resetGame() {
+    score = 0;
+    computerScore = 0;
+    computerScoreboard.innerHTML = `Computer Score: ${computerScore}`
+    playerScoreboard.innerHTML = `Your Score: ${score}`
+    console.log(`You have reset the game`)
+}
+
+function game(playerSelection) {
+    roundResult = playRound(playerSelection);
+    for (let i = 0; i < 5; i++) {
+        if (roundResult == "win") {
+            score += 1;
+            console.log(`You win the round! The score is currently ${score} to ${computerScore}`);
+            playerScoreboard.innerHTML = `Your Score: ${score}`;
+            break;
+        } else if (roundResult == "loss") {
+            computerScore += 1;
+            console.log(`You lost this round! The score is currently ${score} to ${computerScore}`);
+            computerScoreboard.innerHTML = `Computer Score: ${computerScore}`;
+            break;
+        } else {
+            console.log(`It was a tie this round! The score is currently ${score} to ${computerScore}`);
+            break;
         }
     }
-    console.log(`The results are in: Your Score: ${playerScore} | The Computer: ${computerScore}`);
-    if (playerScore > computerScore) {
-        console.log(`You win the game!`);
-    } else if (playerScore == computerScore) {
-        console.log(`The game is a draw!`);
-    } else {
-        console.log(`You lose the game!`);
+
+    if (score == 5 || computerScore == 5) {
+        console.log(`The results are in: Your Score: ${score} | The Computer: ${computerScore}`);
+        if (score > computerScore) {
+            console.log(`You win the game!`);
+            resetGame(score, computerScore);
+        } else if (score == computerScore) {
+            console.log(`The game is a draw!`);
+            resetGame(score, computerScore);
+        } else {
+            console.log(`You lose the game!`);
+            resetGame(score, computerScore);
+        }
     }
 }
 
-game();
+document.getElementById("reset").onclick = function() {resetGame()};
