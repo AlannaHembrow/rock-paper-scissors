@@ -1,15 +1,15 @@
 let btns = document.querySelectorAll(".game__buttons-player");
 let score = 0;
 let computerScore = 0;
+const computerScoreboard = document.getElementById("computer-scoreboard");
+const playerScoreboard = document.getElementById("player-scoreboard");
 
 for (i of btns) {
     i.addEventListener('click', function() {
         let playerSelection = this.innerHTML
-        document.querySelector('.msg').innerHTML = playerSelection;
         game(playerSelection);
     });
 }
-
 
 function playRound(playerSelection) {
     let computerChoice = computerRandom();
@@ -41,6 +41,8 @@ function computerRandom() {
 function resetGame() {
     score = 0;
     computerScore = 0;
+    computerScoreboard.innerHTML = `Computer Score: ${computerScore}`
+    playerScoreboard.innerHTML = `Your Score: ${score}`
     console.log(`You have reset the game`)
 }
 
@@ -50,10 +52,12 @@ function game(playerSelection) {
         if (roundResult == "win") {
             score += 1;
             console.log(`You win the round! The score is currently ${score} to ${computerScore}`);
+            playerScoreboard.innerHTML = `Your Score: ${score}`;
             break;
         } else if (roundResult == "loss") {
             computerScore += 1;
             console.log(`You lost this round! The score is currently ${score} to ${computerScore}`);
+            computerScoreboard.innerHTML = `Computer Score: ${computerScore}`;
             break;
         } else {
             console.log(`It was a tie this round! The score is currently ${score} to ${computerScore}`);
@@ -76,5 +80,4 @@ function game(playerSelection) {
     }
 }
 
-game();
 document.getElementById("reset").onclick = function() {resetGame()};

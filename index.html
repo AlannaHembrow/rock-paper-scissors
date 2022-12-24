@@ -8,14 +8,21 @@
     <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
-    <div class="rps-choices">
-        <button class="game__buttons-player" id="rock">Rock</button>
-        <button class="game__buttons-player" id="paper">Paper</button>
-        <button class="game__buttons-player" id="scissors">Scissors</button>
-        <button class="button" id="reset">Reset</button>
-        <p class="msg"></p>
-    </div>
+    <h1>Rock, Paper, Scissors</h1>
+    <section class="game">
+        <div class="game__scoreboard">
+            <div class="game__scoreboard-info" id="player-scoreboard">Your Score: 0</div>
+            <div class="game__scoreboard-info" id=""></div>
+            <div class="game__scoreboard-info" id="computer-scoreboard">Computer Score: 0</div>
+        </div>
+        <div class="game__buttons">
+            <button class="game__buttons-player" id="rock">Rock</button>
+            <button class="game__buttons-player" id="paper">Paper</button>
+            <button class="game__buttons-player" id="scissors">Scissors</button>
+            <button class="game__buttons" id="reset">Reset</button>
+            <p class="msg"></p>
+        </div>
+    </section>
 </body>
 <script src="script.js"></script> 
 </html>
