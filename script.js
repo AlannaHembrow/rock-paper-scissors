@@ -40,7 +40,7 @@ function computerRandom() {
     }
 }
 
-function resetGame(newGameLog) {
+function resetGame() {
     score = 0;
     computerScore = 0;
     computerScoreboard.innerHTML = `Computer Score: ${computerScore}`
@@ -55,16 +55,17 @@ function game(playerSelection) {
         if (roundResult == "win") {
             score += 1;
             playerScoreboard.innerHTML = `Your Score: ${score}`;
-            let newGameLog = document.createTextNode('You win the round! \n');
-            gameLog.appendChild(newGameLog);
+            gameLog.insertAdjacentHTML('afterBegin', 'You win this round! \n');
             break;
         } else if (roundResult == "loss") {
             computerScore += 1;
             console.log(`You lost this round! The score is currently ${score} to ${computerScore}`);
             computerScoreboard.innerHTML = `Computer Score: ${computerScore}`;
+            gameLog.insertAdjacentHTML('afterBegin', 'You lost this round! \n');
             break;
         } else {
             console.log(`It was a tie this round! The score is currently ${score} to ${computerScore}`);
+            gameLog.insertAdjacentHTML('afterBegin', 'It was a tie this round! \n');
             break;
         }
     }
