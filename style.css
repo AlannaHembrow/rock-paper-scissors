@@ -1,9 +1,9 @@
 body {
-    background: #FFBA49;
+    background: #faedcd;
 }
 
 h1 {
-    color: #23001E;
+    color: #000000;
     font-family: 'Lato', sans-serif;
     text-align: center;
 }
@@ -13,9 +13,9 @@ h1 {
 }
 
 button {
-    background-color: #700934; /* Green */
+    background-color: #ccd5ae; /* Green */
     border: none;
-    color: white;
+    color: black;
     padding: 15px 32px;
     text-decoration: none;
     font-size: 16px;
@@ -34,3 +34,20 @@ button {
     align-content: center;
 }
 
+.game__information {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.game__information-choice {
+    width: 50%;
+    position: relative;
+    border: #000000;
+    padding-bottom: 20%;
+    border-style: solid;
+    display: flex;
+}
+
+.game__information-display-choices {
+    position: absolute;
+}

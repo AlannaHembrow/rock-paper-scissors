@@ -4,11 +4,14 @@ let computerScore = 0;
 const computerScoreboard = document.getElementById("computer-scoreboard");
 const playerScoreboard = document.getElementById("player-scoreboard");
 const gameLog = document.getElementById("game-log");
+const computerDisplayChoices = document.getElementById("computer-choice");
+const playerDisplayChoices = document.getElementById("player-choice");
 
 
 for (i of btns) {
     i.addEventListener('click', function() {
         let playerSelection = this.innerHTML
+        playerDisplayChoices.innerHTML = `${playerSelection}`
         game(playerSelection);
     });
 }
@@ -29,14 +32,21 @@ function playRound(playerSelection) {
         }
 }
 
-function computerRandom() {
+
+function computerRandom(playerSelection) {
     computerChoice = Math.floor(Math.random() * 3);
     if (computerChoice == 0) {
-        return "Rock";
+        computerChoice = "Rock"
+        computerDisplayChoices.innerHTML = "<img src='images/rock.svg' width='10%' height='10%'>"
+        return computerChoice;
     } else if (computerChoice == 1) {
-        return "Paper";
+        computerChoice = "Paper"
+        computerDisplayChoices.innerHTML = "<img src='images/paper.svg' width='10%' height='10%'>"
+        return computerChoice;
     } else {
-        return "Scissors";
+        computerChoice = "Scissors"
+        computerDisplayChoices.innerHTML = "<img src='images/scissors.svg' width='10%' height='10%'>"
+        return computerChoice;
     }
 }
 
