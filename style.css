@@ -1,26 +1,15 @@
 body {
-    background: #FFBA49;
+    background: #faedcd;
 }
 
 h1 {
-    color: #23001E;
+    color: #000000;
     font-family: 'Lato', sans-serif;
     text-align: center;
 }
 
 #game-log {
     white-space: pre;
-}
-
-button {
-    background-color: #700934; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-decoration: none;
-    font-size: 16px;
-    width: 20vh;
-    margin: 20px; /* or whatever you like */
 }
 
 .game__buttons {
@@ -32,5 +21,42 @@ button {
     display: flex;
     flex-flow: column wrap;
     align-content: center;
+    text-align: center;
 }
 
+.game__buttons-player {
+    text-align: center;
+    background-color: #ccd5ae;
+    border: none;
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    width: 20vh;
+    margin: 20px; 
+}
+
+.game__information {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.game__information-choice {
+    position: relative;
+    float: none;
+    margin: 0 auto;
+    border: solid blue 1px;
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game__information-display-choices {
+    width: 20em;
+    height: 15em;
+    border:solid black 1px;
+    display: inline-block;
+    margin: 1.5em 0;
+}
