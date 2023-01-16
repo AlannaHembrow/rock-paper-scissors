@@ -12,17 +12,6 @@ h1 {
     white-space: pre;
 }
 
-button {
-    background-color: #ccd5ae; /* Green */
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-decoration: none;
-    font-size: 16px;
-    width: 20vh;
-    margin: 20px; /* or whatever you like */
-}
-
 .game__buttons {
     display: flex;
     justify-content: center;
@@ -32,6 +21,19 @@ button {
     display: flex;
     flex-flow: column wrap;
     align-content: center;
+    text-align: center;
+}
+
+.game__buttons-player {
+    text-align: center;
+    background-color: #ccd5ae;
+    border: none;
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    width: 20vh;
+    margin: 20px; 
 }
 
 .game__information {
@@ -40,14 +42,21 @@ button {
 }
 
 .game__information-choice {
-    width: 50%;
     position: relative;
-    border: #000000;
-    padding-bottom: 20%;
-    border-style: solid;
+    float: none;
+    margin: 0 auto;
+    border: solid blue 1px;
+    width: 50%;
+
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .game__information-display-choices {
-    position: absolute;
+    width: 20em;
+    height: 15em;
+    border:solid black 1px;
+    display: inline-block;
+    margin: 1.5em 0;
 }

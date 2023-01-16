@@ -11,7 +11,6 @@ const playerDisplayChoices = document.getElementById("player-choice");
 for (i of btns) {
     i.addEventListener('click', function() {
         let playerSelection = this.innerHTML
-        playerDisplayChoices.innerHTML = `${playerSelection}`
         game(playerSelection);
     });
 }
@@ -33,19 +32,20 @@ function playRound(playerSelection) {
 }
 
 
-function computerRandom(playerSelection) {
+function computerRandom() {
     computerChoice = Math.floor(Math.random() * 3);
     if (computerChoice == 0) {
         computerChoice = "Rock"
-        computerDisplayChoices.innerHTML = "<img src='images/rock.svg' width='10%' height='10%'>"
+        computerDisplayChoices.innerHTML = "<img src='images/Rock.svg' width='90%' height='90%'>Computer Chooses: Rock!"
+
         return computerChoice;
     } else if (computerChoice == 1) {
         computerChoice = "Paper"
-        computerDisplayChoices.innerHTML = "<img src='images/paper.svg' width='10%' height='10%'>"
+        computerDisplayChoices.innerHTML = "<img src='images/Paper.svg' width='90%' height='90%'>Computer Chooses: Paper!"
         return computerChoice;
     } else {
         computerChoice = "Scissors"
-        computerDisplayChoices.innerHTML = "<img src='images/scissors.svg' width='10%' height='10%'>"
+        computerDisplayChoices.innerHTML = "<img src='images/Scissors.svg' width='90%' height='90%'>Computer Chooses: Scissors!"
         return computerChoice;
     }
 }
@@ -55,12 +55,15 @@ function resetGame() {
     computerScore = 0;
     computerScoreboard.innerHTML = `Computer Score: ${computerScore}`
     playerScoreboard.innerHTML = `Your Score: ${score}`
+    computerDisplayChoices.innerHTML = ""
+    playerDisplayChoices.innerHTML = ""
     gameLog.innerHTML = "";
     console.log(`You have reset the game`)
 }
 
 function game(playerSelection) {
     roundResult = playRound(playerSelection);
+    playerDisplayChoices.innerHTML = "<img src='images/" + playerSelection +  ".svg' width='90%' height='90%'>'Player Chooses: " + playerSelection +  "!";
     for (let i = 0; i < 5; i++) {
         if (roundResult == "win") {
             score += 1;
@@ -81,16 +84,10 @@ function game(playerSelection) {
     }
 
     if (score == 5 || computerScore == 5) {
-        console.log(`The results are in: Your Score: ${score} | The Computer: ${computerScore}`);
         if (score > computerScore) {
-            console.log(`You win the game!`);
-            resetGame(score, computerScore);
-        } else if (score == computerScore) {
-            console.log(`The game is a draw!`);
-            resetGame(score, computerScore);
+            gameLog.insertAdjacentHTML('afterBegin', 'You win the game! Click reset to start the game again.\n');
         } else {
-            console.log(`You lose the game!`);
-            resetGame(score, computerScore);
+            gameLog.insertAdjacentHTML('afterBegin', 'You lost the game! Click reset to start the game again.\n');
         }
     }
 }
